@@ -1,5 +1,7 @@
 # LibrarySystem
-# 项目目录结构
+SSM+maven实现图书管理系统 
+
+项目目录结构
 
     －LoginDemo
         －src
