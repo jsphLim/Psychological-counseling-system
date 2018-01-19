@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+<script src="js/searchJS.js"></script>
+<script src="js/loginJS.js"></script>
+
+<style>
+    .panel{width:60%;margin:0 auto;text-align: center;}
+    .form-inline{width:60%;margin:0 auto;}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>整体架构</title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">图书管理系统</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <!--<li><a href="#">Link</a></li>-->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="UserID">
+                        <script type="text/javascript">
+                            $(function() {
+                                $.ajax({
+                                    url: "online",
+                                    type: "GET",
+                                    success: function(response) {
+                                        if(response!=null) {
+                                            $("#UserID").append(response.toString()
+                                                + '<b class="caret"></b>');
+                                        }
+                                    },
+                                    error: function(xhr, msg, e) {
+                                        alert("error!");
+                                    }
+                                });
+                            });
+
+                        </script>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="UpdatePwd.html">修改密码</a></li>
+                        <li><a href="Mybook.html">借阅记录</a></li>
+                        <li><a href="index.html" onclick="logout()">登出</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search" id="searchTxt">
+                </div>
+                <button type="submit" class="btn btn-default" id="search_bt" onclick="search()">Search</button>
+            </div>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+    </div>
+    <table class="table" id="postTable">
+        <tr style="font-weight: bold"><td>书名</td><td>作者</td><td>出版社</td><td>借阅状态</td></tr>
+        <!--<tr><td>算法导论</td><td>Thomas</td><td>机械工业出版社</td><td>已借</td></tr>-->
+        <!--<tr><td>产品 B</td><td>400</td></tr>-->
+    </table>
+</div>
+
+
+
+</body>
+
+</html>

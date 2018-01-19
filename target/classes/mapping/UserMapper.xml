@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ly.ssm.dao.UserDao">
+
+    <resultMap id="UserBaseMap" type="com.ly.ssm.model.User">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="user_email" property="userEmail" jdbcType="VARCHAR"/>
+        <result column="user_pwd" property="userPwd" jdbcType="VARCHAR"/>
+
+    </resultMap>
+
+    <select id="selectUserById" parameterType="java.lang.Long" resultMap="UserBaseMap">
+        SELECT * FROM t_user
+        WHERE id = #{Id}
+    </select>
+
+
+    <select id="selectUser" parameterType="com.ly.ssm.model.User" resultMap="UserBaseMap">
+        SELECT * FROM t_user WHERE user_name=#{userName}
+    </select>
+
+
+    <select id="selectAllUser" resultMap="UserBaseMap">
+        SELECT * FROM t_user
+    </select>
+
+    <update id="updatePass" parameterType="com.ly.ssm.model.User">
+        update t_user set user_pwd=#{userPwd} WHERE user_name=#{userName}
+    </update>
+
+
+
+    <insert id="save" parameterType="com.ly.ssm.model.User">
+                insert into t_user (user_name,user_email,user_pwd) values
+                (#{userName},#{userEmail},#{userPwd})
+    </insert>
+
+
+
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ly.ssm.dao.BookDao">
+
+    <resultMap id="BookBaseMap" type="com.ly.ssm.model.Book">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="book_name" property="bookName" jdbcType="VARCHAR"/>
+        <result column="book_writer" property="bookWriter" jdbcType="VARCHAR"/>
+        <result column="book_publisher" property="Publisher" jdbcType="VARCHAR"/>
+        <result column="book_isrent" property="isRent" jdbcType="BIGINT"/>
+        <result column="book_person" property="borrow_person" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+
+    <select id="selectBookByBorrowPerson" parameterType="com.ly.ssm.model.Book" resultMap="BookBaseMap">
+        SELECT * FROM t_book
+        WHERE book_person=#{borrow_person}
+    </select>
+
+    <select id="selectBookByName" parameterType="com.ly.ssm.model.Book" resultMap="BookBaseMap">
+        SELECT * FROM t_book
+        WHERE book_name LIKE CONCAT('%', #{bookName}, '%')
+    </select>
+
+
+    <select id="selectBookByWriter" parameterType="com.ly.ssm.model.Book" resultMap="BookBaseMap">
+        SELECT * FROM t_book WHERE book_writer like CONCAT('%', #{bookWriter}, '%')
+    </select>
+
+    <select id="selectBookById" parameterType="java.lang.Long" resultMap="BookBaseMap">
+        SELECT * FROM t_book
+        WHERE id = #{id}
+    </select>
+
+    <select id="showAllBook" resultMap="BookBaseMap">
+        SELECT * FROM t_book
+    </select>
+
+
+    <update id="borrow" parameterType="com.ly.ssm.model.Book">
+        update t_book set book_isrent=1,book_person=#{borrow_person} WHERE id=#{id}
+    </update>
+
+    <update id="returnBook" parameterType="com.ly.ssm.model.Book">
+        update t_book set book_isrent=0,book_person='' WHERE id=#{id}
+    </update>
+
+
+    <insert id="save" parameterType="com.ly.ssm.model.Book">
+        insert into t_book (book_name,book_writer,book_publisher,book_isrent) values
+        (#{bookName},#{bookWriter},#{Publisher},#{isrent})
+    </insert>
+
+
+
+</mapper>

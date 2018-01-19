@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+<script src="js/searchJS.js"></script>
+<script src="js/loginJS.js"></script>
+
+<style>
+    .panel{width:60%;margin:0 auto;text-align: center;}
+    .form-inline{width:60%;margin:0 auto;}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>我的借阅</title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">图书管理系统</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="indexpage.html">返回主页</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="UserID">
+                        <script type="text/javascript">
+                            $(function() {
+                                $.ajax({
+                                    url: "online",
+                                    type: "GET",
+                                    success: function(response) {
+                                        if(response!=null) {
+                                            $("#UserID").append(response.toString()
+                                                + '<b class="caret"></b>');
+                                        }
+                                    },
+                                    error: function(xhr, msg, e) {
+                                        alert("error!");
+                                    }
+                                });
+                            });
+
+                        </script>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="UpdatePwd.html">修改密码</a></li>
+                        <li><a href="Mybook.html">借阅记录</a></li>
+                        <li><a href="index.html" onclick="logout()">登出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+
+    </div>
+    <table class="table" id="borrowPanel">
+        <tr style="font-weight: bold"><td>书名</td><td>作者</td><td>出版社</td><td>借阅状态</td></tr>
+        <script type="text/javascript">
+            $(function() {
+                $.ajax({
+                    url: "showBorrow",
+                    type: "GET",
+                    success: function(response) {
+                        $.each(response, function(i, item) {
+                                $("#borrowPanel").append(
+                                    '<tr><td>'+item.bookName+'</td><td>'+item.bookWriter+'</td><td>'+item.Publisher+'</td><td><a class="btn btn-primary btn-xs" href="#"  role="button" id="'+item.book_id+'" onclick="returnBook(this)" >归还</a></td></tr>');
+                        });
+                    },
+                    error: function(xhr, msg, e) {
+                        alert("error!");
+                    }
+                });
+            });
+
+            function returnBook(obj) {
+                var data={};
+                data["id"]=obj.id.toString();
+                if(confirm("请确定是否归还这本书？")){
+                    $.ajax({
+                        url:"returnBook",
+                        type: "POST",
+                        data:data,
+                        dataType:"JSON",
+                        success: function (response) {
+                            if(response === true)
+                                setTimeout('window.location.href="Mybook.html"');
+                        },
+                        error: function(xhr, msg, e) {
+                            console.log(e);
+                        }
+
+                    });
+
+
+                    alert("成功归还！")
+                }
+            }
+
+        </script>
+    </table>
+</div>
+
+
+
+</body>
+
+</html>
