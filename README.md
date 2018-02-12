@@ -18,3 +18,5 @@ SSM+maven实现图书管理系统
                 －web.xml
             －index.jsp
         －pom.xml
+
+部署在tomcat上运行即可。
