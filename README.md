@@ -18,4 +18,4 @@ SSM+maven实现图书管理系统
             －index.jsp
         －pom.xml
 
-部署在tomcat8上运行即可。
+部署在tomcat8上运行即可，项目是入门学习spring的时候写的，各方面并不完善。
