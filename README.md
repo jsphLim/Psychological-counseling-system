@@ -16,3 +16,13 @@
 - 2.数据库实验0.5学分 所以没花大功夫在上面，用了原生bootstrap
 - 3.有一些细节可能没处理好，因为是一个人周末写的，急着提交跑路
 - 4.适合新手入门
+
+![Image text](http://www.jsphlim.cn/docs/1.png)
+
+![Image text](http://www.jsphlim.cn/docs/2.png)
+
+![Image text](http://www.jsphlim.cn/docs/3.png)
+
+
+![Image text](http://www.jsphlim.cn/docs/4.png)
+
