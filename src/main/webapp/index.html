@@ -1,74 +1,432 @@
-<!doctype html>
-<html lang="zh">
-<script src="js/loginJS.js"></script>
-<script src="js/jquery-1.10.2.min.js"></script>
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>图书管理系统</title>
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<!--[if IE]>
-		<script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
-	<![endif]-->
-</head>
+
+<!DOCTYPE html>
+<html lang="en">
+	<!-- 标题栏 -->
+	<link rel="icon" href="img/logo.ico" type="image/x-icon">
+	<!-- 收藏夹 -->
+	<meta charset="utf-8">
+	<title>心理咨询中心</title>
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="http://jichuangclub.com/css/owl.carousel.css">
+	<link rel="stylesheet" href="http://jichuangclub.com/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://jichuangclub.com/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://jichuangclub.com/css/style.css">
+	<link rel="stylesheet" href="http://jichuangclub.com/css/ionicons.min.css">
+	<link rel="stylesheet" href="http://jichuangclub.com/css/animate.css">
+	<link rel="stylesheet" href="http://jichuangclub.com/css/responsive.css">
+
+	<!-- Js -->
+	<script src="http://jichuangclub.com/js/vendor/modernizr-2.6.2.min.js"></script>
+	<script src="http://jichuangclub.com/js/vendor/jquery-1.10.2.min.js"></script>
+	<script src="http://jichuangclub.com/js/bootstrap.min.js"></script>
+	<script src="http://jichuangclub.com/js/owl.carousel.min.js"></script>
+	<script src="http://jichuangclub.com/js/plugins.js"></script>
+	<script src="http://jichuangclub.com/js/min/waypoints.min.js"></script>
+	<script src="http://jichuangclub.com/js/jquery.counterup.js"></script>
+	<script src="js/user.js"></script>
+
+
 <body>
-	<div class="jq22-container" style="padding-top:100px">
-		<div class="login-wrap">
-			<div class="login-html">
-				<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
-				<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
-				<div class="login-form">
-					<div class="sign-in-htm">
-						<div class="group">
-							<label for="user" class="label">Username</label>
-							<input id="username" type="text" class="input">
-						</div>
-						<div class="group">
-							<label for="pass" class="label">Password</label>
-							<input id="password" type="password" class="input" data-type="password">
-						</div>
-						<div class="group">
-							<input id="check" type="checkbox" class="check" checked>
-							<label for="check"><span class="icon"></span> Keep me Signed in</label>
-						</div>
-						<div class="group">
-							<input type="submit" class="button" value="Sign In" onclick="c_o_li_submit()">
-						</div>
-						<div class="hr"></div>
-						<div class="foot-lnk">
-							<a href="#forgot">Forgot Password?</a>
-						</div>
-					</div>
-					<div class="sign-up-htm">
-						<div class="group">
-							<label for="user" class="label">Username</label>
-							<input id="user" type="text" class="input">
-						</div>
-						<div class="group">
-							<label for="pass" class="label">Password</label>
-							<input id="pass" type="password" class="input" data-type="password">
-						</div>
-						<div class="group">
-							<label for="pass" class="label">Repeat Password</label>
-							<input id="passconfirm" type="password" class="input" data-type="password">
-						</div>
-						<div class="group">
-							<label for="pass" class="label">Email Address</label>
-							<input id="email" type="text" class="input">
-						</div>
-						<div class="group">
-							<input type="submit" class="button" value="Sign Up" onclick="register_submit()">
-						</div>
-						<div class="hr"></div>
-						<div class="foot-lnk">
-							<label for="tab-1">Already Member?</a>
-						</div>
-					</div>
-				</div>
+
+
+
+<!-- Header Start -->
+<header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-10" style="margin-left: -100px">
+				<a class="navbar-brand" href="../index.html">
+					<img src="img/logo.ico" style="width: 10%;margin-top: -15px;" alt="Logo">
+
+				</a>
+			</div>
+				<div class="collapse navbar-collapse col-md-2" id="bs-example-navbar-collapse-1">
+							<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login" style="margin-left: 100px;">登录</button>
+							<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#register" >注册</button>
+
+				</div><!-- /.navbar-collapse -->
 			</div>
 		</div>
 	</div>
-	
+
+
+
+</header><!-- header close -->
+<!-- 轮播 -->
+
+
+
+
+
+<!-- 登录窗口 -->
+<div id="login" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<button class="close" data-dismiss="modal">
+					<span>&times;</span>
+				</button>
+			</div>
+			<div class="modal-title">
+				<h2 class="text-center">登录</h2>
+			</div>
+			<div class="modal-body">
+					<div class="form-group">
+						<label for="username">用户名</label>
+						<input id="username" class="form-control" type="text" placeholder="">
+					</div>
+					<div class="form-group">
+						<label for="password">密码</label>
+						<input id="password" class="form-control" type="password" placeholder="">
+					</div>
+					<div class="text-right">
+						<button class="btn btn-primary" type="submit" onclick="c_o_li_submit()">确认</button>
+						<button class="btn btn-danger" data-dismiss="modal">取消</button>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- 注册窗口 -->
+<div id="register" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<button class="close" data-dismiss="modal">
+					<span>&times;</span>
+				</button>
+			</div>
+			<div class="modal-title">
+				<h2 class="text-center">注册</h2>
+			</div>
+			<div class="modal-body">
+					<div class="form-group">
+						<label for="user">学号</label>
+						<input id="user" class="form-control" type="text" placeholder="如2001051525">
+					</div>
+					<div class="form-group">
+						<label for="name">姓名</label>
+						<input id="name" class="form-control" type="text" placeholder="">
+					</div>
+					<div class="form-group">
+						<label for="pass">密码</label>
+						<input id="pass" class="form-control" type="password" placeholder="">
+					</div>
+					<div class="form-group">
+						<label for="passconfirm">重复密码</label>
+						<input id="passconfirm" class="form-control" type="password" placeholder="">
+					</div>
+					<div class="form-group">
+						<label for="email">邮箱</label>
+						<input id="email" class="form-control" type="text" placeholder="@jnu.edu.com">
+					</div>
+					<div class="form-group">
+						<label for="deptno">所在系</label>
+						<input id="deptno" class="form-control" type="text" placeholder="">
+					</div>
+					<div class="text-right">
+						<button class="btn btn-primary" type="submit" onclick="register_submit()">确认</button>
+						<button class="btn btn-danger" data-dismiss="modal">取消</button>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<div class="banner">
+	<section class="slider">
+		<div class="flexslider">
+			<ul class="slides" id="gwtd">
+			</ul>
+		</div>
+	</section>
+</div>
+<link rel="stylesheet" href="http://jichuangclub.com/css/flexslider.css" type="text/css" media="screen" />
+<script defer src="http://jichuangclub.com/js/jquery.flexslider.js"></script>
+<!-- 轮播 -->
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+
+    });
+    $(window).load(function(){
+        // 获取轮播图
+		$("#gwtd").prepend(
+			'<li>'
+			+'<div class="banner01" style="background-image:url(https://ms.jnu.edu.cn/uploads/201805/30/1527688200807753.jpg); background-size:100% 100%;">'
+			+'</div>'
+			+'</li>'
+		);
+        $("#gwtd").prepend(
+            '<li>'
+            +'<div class="banner01" style="background-image:url(http://202.116.162.93:81/upload/ArticleUploadFiles/image/20180704/20180704204039_9650.png); background-size:100% 100%;">'
+            +'</div>'
+            +'</li>'
+        );
+        $("#gwtd").prepend(
+            '<li>'
+            +'<div class="banner01" style="background-image:url(http://hxradio.cnr.cn/huaxiazs/gangao/20161122/W020161122532745889217.jpg); background-size:100% 100%;">'
+            +'</div>'
+            +'</li>'
+        );
+		$('.flexslider').flexslider({
+			animation: "slide",
+			start: function(slider){
+                        // $('body').removeClass('loading');
+                    }
+		}); // flexslider
+    });
+</script>
+
+<header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- header Nav Start -->
+				<nav class="navbar navbar-default">
+					<div class="container-fluid">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+
+							<h1 style="font-weight: 550; margin-left: -60px;">导师名录</h1>
+						</div>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+					</div><!-- /.container-fluid -->
+				</nav>
+			</div>
+		</div>
+	</div>
+</header><!-- header close -->
+
+
+
+
+<!-- Wrapper Start -->
+<section style="margin-top: -30px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="block">
+					<section id="service">
+						<div class="col-sm-6  col-md-2">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/01李少辉.png" />
+								<h4 style="text-align: right;">李少辉 </h4>
+								<p style="text-align: right;">国家二级注册心理咨询师</p>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/02孙巧芬.png" />
+								<h4 style="text-align: right;">孙巧芬 </h4>
+								<p style="text-align: right;">精神分析师</p>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-2">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/03刘东明.png" />
+								<h4 style="text-align: right;">刘东明 </h4>
+								<p style="text-align: right;">暨南大学心理学教授</p>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-2">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/04叶秉光.png" />
+								<h4 style="text-align: right;">叶秉光</h4>
+								<p style="text-align: right;">暨南大学副教授</p>
+							</div>
+
+						</div>
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/05刘向农.png" />
+								<h4 style="text-align: right;">刘向农 </h4>
+								<p style="text-align: right;">国家一级注册心理咨询师</p>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/06善因先生.png" />
+								<h4 style="text-align: right;">曹文研 </h4>
+								<p style="text-align: right;">心理学硕士</p>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/07刘汉城.png" />
+								<h4 style="text-align: right;">刘汉城</h4>
+								<p style="text-align: right;">国家二级注册心理咨询师</p>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/08王雪薇.png" />
+								<h4 style="text-align: right;">王雪薇 </h4>
+								<p style="text-align: right;">暨南大学副教授</p>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/09李华.png" />
+								<h4 style="text-align: right;">李华 </h4>
+								<p style="text-align: right;">精神分析师 </p>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/10钟文辉.png" />
+								<h4 style="text-align: right;">钟文辉 </h4>
+								<p style="text-align: right;">国家二级注册心理咨询师 </p>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/11税长源.png" />
+								<h4 style="text-align: right;">税长源 </h4>
+								<p style="text-align: right;">实习咨询师</p>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/12李俊.png" />
+								<h4 style="text-align: right;">李俊 </h4>
+								<p style="text-align: right;">实习咨询师 </p>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/13骆涛.png" />
+								<h4 style="text-align: right;">骆涛 </h4>
+								<p style="text-align: right;"> 实习咨询师</p>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/14聂铁良.png" />
+								<h4 style="text-align: right;">聂铁良  </h4>
+								<p style="text-align: right;">实习咨询师</p>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/15陈鹉.png" />
+								<h4 style="text-align: right;">陈鹉  </h4>
+								<p style="text-align: right;"> 实习咨询师</p>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/16冯玮瑜.png" />
+								<h4 style="text-align: right;">冯伟瑜 </h4>
+								<p style="text-align: right;"> 实习咨询师</p>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/17吴俊智.png" />
+								<h4 style="text-align: right;">吴俊智</h4>
+								<p style="text-align: right;">  心理学硕士</p>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-2 ">
+							<div class="service-item">
+								<img src="http://jichuangclub.com/Main/team/18孙晓四.png" />
+								<h4 style="text-align: right;">孙晓四 </h4>
+								<p style="text-align: right;">心理学硕士</p></p>
+							</div>
+						</div>
+
+
+
+					</section>
+
+				</div>
+			</div><!-- .col-md-7 close -->
+			<!--<div class="col-md-5 col-sm-12">
+              <div class="block">
+                <img src="img/wrapper-img.png" alt="Img">
+              </div>
+            </div><!-- .col-md-5 close -->
+		</div>
+	</div>
+</section>
+
+
+
+
+</section>
+
+</section>
+
+</section>
+
+
+
+<!-- footer Start -->
+<footer style="background-image: url(http://jichuangclub.com/Main/bottom/bottombg.png);padding:0" id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9 col-md-offset-3">
+				<div class="col-md-3">
+					<h1 style="color: white; font-size: 25px;text-align: left; font-weight: 600;">招商合作</h1>
+					<p style="color: white; font-size: 16px;text-align: left;"><font color="red"><b>|</b></font>欢迎联系咨询</p >
+				</div>
+				<div class="col-md-4">
+					<h3 class="userIcon1"><p style="color: white;text-align:left;margin-left: 10px">&nbsp;15918780387（林先生）</p >
+					</h3>
+					<h3 class="userIcon2"><p style="color: white;text-align:left">&nbsp;&nbsp;&nbsp;&nbsp;micjsphlim@gmail.com
+					</p >
+					</h3>
+					<h3 class="userIcon3"><p style="color: white;text-align:left">&nbsp;&nbsp;&nbsp;&nbsp;广州市番禺区兴业大道东855号
+					</p >
+					</h3>
+				</div>
+				<div class="col-md-3">
+					<br/>
+				</div>
+			</div>
+		</div>
+		<br>
+		<p>Copyright &copy; 2016 - 2020 . All rights reserved. |暨南大学计算机科学系| 粤ICP备19131038-1号</p>
+	</div>
+</footer>
+<style type="text/css">.userIcon1 {
+	background: url(http://jichuangclub.com/Main/bottom/tel.png) left center no-repeat;
+	padding-left: 16px;
+}
+
+.userIcon2 {
+	background: url(http://jichuangclub.com/Main/bottom/mail.png) left center no-repeat;
+	padding-left: 16px;
+}
+
+.userIcon3 {
+	background: url(http://jichuangclub.com/Main/bottom/loc.png) left center no-repeat;
+	padding-left: 16px;
+}</style>
+
+
+
+
 </body>
 </html>

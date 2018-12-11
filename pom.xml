@@ -7,7 +7,9 @@
   <version>1.0-SNAPSHOT</version>
   <name>web-ssm Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
   <properties>
+
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -121,7 +123,7 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>${mysql-driver.version}</version>
+      <version>8.0.11</version>
     </dependency>
     <!-- 添加数据库连接池依赖 -->
     <dependency>
@@ -196,9 +198,114 @@
       <artifactId>commons-codec</artifactId>
       <version>1.9</version>
     </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>4.2.5.RELEASE</version>
+    </dependency>
   </dependencies>
 
   <build>
-    <finalName>web-ssm</finalName>
-  </build>
+    <!--<plugins>-->
+
+
+      <!--<plugin>-->
+        <!--<groupId>org.apache.maven.plugins</groupId>-->
+        <!--<artifactId>maven-compiler-plugin</artifactId>-->
+        <!--<version>3.1</version>-->
+        <!--<configuration>-->
+          <!--<source>1.7</source>-->
+          <!--<target>1.7</target>-->
+          <!--<encoding>UTF-8</encoding>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
+
+      <!--&lt;!&ndash; 打包jar文件时，配置manifest文件，加入lib包的jar依赖 &ndash;&gt;-->
+      <!--<plugin>-->
+        <!--<groupId>org.apache.maven.plugins</groupId>-->
+        <!--<artifactId>maven-jar-plugin</artifactId>-->
+        <!--<configuration>-->
+          <!--<archive>-->
+            <!--&lt;!&ndash; 清单文件 &ndash;&gt;-->
+            <!--<manifest>-->
+              <!--<mainClass>com.ly.ssm.controller.application</mainClass>-->
+              <!--<addClasspath>true</addClasspath>-->
+              <!--<classpathPrefix>lib/</classpathPrefix>-->
+            <!--</manifest>-->
+            <!--&lt;!&ndash; 给清单文件添加键值对(配置文件外置) &ndash;&gt;-->
+            <!--<manifestEntries>-->
+              <!--<Class-Path>config/</Class-Path>-->
+            <!--</manifestEntries>-->
+          <!--</archive>-->
+          <!--<classesDirectory>-->
+          <!--</classesDirectory>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
+      <!--&lt;!&ndash; 拷贝依赖的jar包到lib目录 &ndash;&gt;-->
+      <!--<plugin>-->
+        <!--<groupId>org.apache.maven.plugins</groupId>-->
+        <!--<artifactId>maven-dependency-plugin</artifactId>-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<id>copy</id>-->
+            <!--<phase>package</phase>-->
+            <!--<goals>-->
+              <!--<goal>copy-dependencies</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+              <!--<outputDirectory>-->
+                <!--${project.build.directory}/lib-->
+              <!--</outputDirectory>-->
+            <!--</configuration>-->
+          <!--</execution>-->
+        <!--</executions>-->
+      <!--</plugin>-->
+      <!-- 解决资源文件的编码问题 -->
+      <!--<plugin>-->
+        <!--<groupId>org.apache.maven.plugins</groupId>-->
+        <!--<artifactId>maven-resources-plugin</artifactId>-->
+        <!--<version>2.5</version>-->
+        <!--<configuration>-->
+          <!--<encoding>UTF-8</encoding>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
+      <!--&lt;!&ndash; 打包source文件为jar文件 &ndash;&gt;-->
+      <!--<plugin>-->
+        <!--<artifactId>maven-source-plugin</artifactId>-->
+        <!--<version>2.1</version>-->
+        <!--<configuration>-->
+          <!--<attach>true</attach>-->
+          <!--<encoding>UTF-8</encoding>-->
+        <!--</configuration>-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<phase>compile</phase>-->
+            <!--<goals>-->
+              <!--<goal>jar</goal>-->
+            <!--</goals>-->
+          <!--</execution>-->
+        <!--</executions>-->
+      <!--</plugin>-->
+
+
+
+      <!--<plugin>-->
+        <!--<groupId>org.apache.tomcat.maven</groupId>-->
+        <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
+        <!--<version>2.1</version>-->
+        <!--<configuration>-->
+          <!--<server>tomcat</server>-->
+          <!--<url>http://localhost:8803/manager/text</url>-->
+          <!--<path>/${project.build.finalName}</path>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
+
+
+
+
+
+
+
+    <!--</plugins>-->
+</build>
 </project>

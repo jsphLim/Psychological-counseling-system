@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ly.ssm.dao.studentDao">
+
+    <resultMap id="studentBaseMap" type="com.ly.ssm.model.student">
+        <id column="sno" property="sno" jdbcType="CHAR"/>
+        <result column="name" property="studentName" jdbcType="CHAR"/>
+        <result column="email" property="studentEmail" jdbcType="CHAR"/>
+        <result column="password" property="studentPassword" jdbcType="CHAR"/>
+        <result column="deptno" property="deptno" jdbcType="CHAR"/>
+    </resultMap>
+
+
+
+    <select id="selectStudent" parameterType="com.ly.ssm.model.student" resultMap="studentBaseMap">
+        select * from student
+        where sno=#{sno}
+    </select>
+
+
+    <update id="updatePassword" parameterType="com.ly.ssm.model.student">
+        update student set password=#{studentPassword} where sno=#{sno};
+    </update>
+
+
+    <insert id="register" parameterType="com.ly.ssm.model.student">
+        insert into student (sno,name,password,email,deptno) values
+        (#{sno},#{studentName},#{studentPassword},#{studentEmail},#{deptno});
+    </insert>
+
+
+
+</mapper>

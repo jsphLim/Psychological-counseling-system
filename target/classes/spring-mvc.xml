@@ -13,8 +13,30 @@
     <!-- scan the package and the sub package -->
     <context:component-scan base-package="com.ly.ssm.controller" />
 
+
+
+
+
+
+
+
+
+
     <!-- don't handle the static resource -->
     <mvc:default-servlet-handler />
+
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/showAll"/>-->
+            <!--<mvc:mapping path="/changepw"/>-->
+            <!--<mvc:mapping path="/searchTname"/>-->
+            <!--<mvc:mapping path="/search"/>-->
+            <!--<mvc:mapping path="/createAppointment"/>-->
+            <!--&lt;!&ndash;<mvc:mapping path="/reservation.html"/>&ndash;&gt;-->
+            <!--<bean class="com.ly.ssm.interceptor.CommonInterceptor"/>-->
+        <!--</mvc:interceptor>-->
+
+    <!--</mvc:interceptors>-->
 
     <!-- if you use annotation you must configure following setting -->
     <mvc:annotation-driven>

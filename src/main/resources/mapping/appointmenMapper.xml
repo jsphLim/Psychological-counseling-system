@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ly.ssm.dao.appointmentDao">
+
+    <resultMap id="appointmentBaseMap" type="com.ly.ssm.model.appointment">
+        <id column="serialnumber" property="serialNumber" jdbcType="INTEGER"/>
+        <result column="sno" property="sno" jdbcType="CHAR"/>
+        <result column="tno" property="tno" jdbcType="CHAR"/>
+        <result column="detail" property="detail" jdbcType="CHAR"/>
+        <result column="appointdate" property="appointDate" jdbcType="CHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="sname" property="sname" jdbcType="CHAR"/>
+        <result column="tname" property="tname" jdbcType="CHAR"/>
+        <result column="location" property="location" jdbcType="CHAR"/>
+
+    </resultMap>
+
+
+
+    <select id="selectBySno" parameterType="com.ly.ssm.model.appointment" resultMap="appointmentBaseMap">
+        SELECT * FROM appointment
+        WHERE sno=#{sno}
+    </select>
+
+    <select id="selectBytno" parameterType="com.ly.ssm.model.appointment" resultMap="appointmentBaseMap">
+        SELECT * FROM appointment
+        WHERE tno =#{tno}
+    </select>
+
+    <select id="selectBySerialNumber" parameterType="com.ly.ssm.model.appointment" resultMap="appointmentBaseMap">
+        SELECT * FROM appointment
+        WHERE serialnumber =#{serialNumber};
+    </select>
+
+    <update id="confirmStatus" parameterType="com.ly.ssm.model.appointment">
+        update appointment set status=1 WHERE serialnumber = #{serialNumber}
+    </update>
+
+    <update id="rejectStatus" parameterType="com.ly.ssm.model.appointment">
+        update appointment set status=-1 WHERE serialnumber=#{serialNumber}
+    </update>
+
+
+    <delete id="cancel" parameterType="com.ly.ssm.model.appointment">
+        delete from appointment where serialnumber = #{serialNumber}
+    </delete>
+
+    <insert id="createAppotintment" parameterType="com.ly.ssm.model.appointment">
+        insert into appointment(serialnumber,sno,tno,detail,appointdate,status,sname,tname,location) values(#{serialNumber},#{sno},#{tno},#{detail},#{appointDate},#{status},#{sname},#{tname},#{location});
+    </insert>
+
+    <select id="checkReserved" parameterType="com.ly.ssm.model.appointment" resultMap="appointmentBaseMap">
+        SELECT * FROM appointment
+        WHERE sno=#{sno} and tname=#{tname};
+    </select>
+
+</mapper>

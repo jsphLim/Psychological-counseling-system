@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ly.ssm.dao.consultantDao">
+
+    <resultMap id="consultantBaseMap" type="com.ly.ssm.model.consultant">
+        <id column="tno" property="tno" jdbcType="CHAR"/>
+        <result column="name" property="consultantName" jdbcType="CHAR"/>
+        <result column="email" property="consultantEmail" jdbcType="CHAR"/>
+        <result column="information" property="consultantInformation" jdbcType="CHAR"/>
+        <result column="currentnumber" property="currentNumber" jdbcType="INTEGER"/>
+        <result column="totalnumber" property="totalNumber" jdbcType="INTEGER"/>
+        <result column="location" property="location" jdbcType="CHAR"/>
+
+
+
+    </resultMap>
+
+
+
+    <select id="selectConsultant" parameterType="com.ly.ssm.model.consultant" resultMap="consultantBaseMap">
+        SELECT * FROM consultant;
+    </select>
+
+    <select id="selectByTno" parameterType="com.ly.ssm.model.consultant" resultMap="consultantBaseMap">
+        SELECT * FROM consultant where tno = #{tno};
+    </select>
+
+    <select id="selectByTname" parameterType="com.ly.ssm.model.consultant" resultMap="consultantBaseMap">
+        SELECT * FROM consultant where name like CONCAT('%', #{consultantName}, '%');
+    </select>
+
+
+    <update id="updatePassword" parameterType="com.ly.ssm.model.consultant">
+        update consultant set password=#{consultantPassword} where tno=#{tno};
+    </update>
+
+
+    <update id="reserve" parameterType="com.ly.ssm.model.consultant">
+        update consultant set currentnumber = currentnumber+1 where tno=#{tno};
+    </update>
+
+    <update id="cancel" parameterType="com.ly.ssm.model.consultant">
+        update consultant set currentnumber = currentnumber-1 where tno=#{tno};
+    </update>
+
+
+
+</mapper>
