@@ -10,6 +10,10 @@ function c_o_li_data() {
 }
 function c_o_li_submit() {
         var data = c_o_li_data();
+        if(data["username"]==="" || data["password"]===""){
+            alert("账号密码不能为空");
+            return ;
+        }
 
         $.ajax({
             url: "login",
@@ -115,9 +119,13 @@ function online() {
                     $("#UserID").innerHTML(response.toString()
                                              + '<b class="caret"></b>');
                 }
+                else{
+                setTimeout('window.location.href="index.html"', 1000);
+                }
         },
         error: function(xhr, msg, e) {
-            alert("error!");
+            alert("网络异常");
+            setTimeout('window.location.href="index.html"', 1000);
         }
     });
 }
