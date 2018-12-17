@@ -33,7 +33,7 @@ CREATE TABLE `appointment` (
   `tname` char(20) NOT NULL,
   `location` char(45) NOT NULL,
   PRIMARY KEY (`serialnumber`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `consultant` (
   `totalnumber` int(11) NOT NULL,
   `dutytime` varchar(45) NOT NULL,
   PRIMARY KEY (`tno`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +90,7 @@ CREATE TABLE `student` (
   `email` char(100) NOT NULL,
   `deptno` char(10) NOT NULL,
   PRIMARY KEY (`sno`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
