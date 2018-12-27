@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.ly.ssm.model.appointment;
 import com.ly.ssm.model.consultant;
+import com.ly.ssm.model.student;
 import com.ly.ssm.service.appointmentService;
 import com.ly.ssm.service.consultantService;
 import com.ly.ssm.utils.util;
@@ -37,10 +38,8 @@ public class appointmentController {
     public JSONArray search(HttpServletRequest request, HttpServletResponse response){
         List<appointment> appointments = new ArrayList<appointment>();
         HttpSession session = request.getSession();
-        if(session.getAttribute("user").toString().equals("10000")) {
-            appointments = appointmentService.selectByTno(session.getAttribute("user").toString());
-        }
-        else appointments = appointmentService.selectBySno(session.getAttribute("user").toString());
+        student st = (student)session.getAttribute("user");
+        appointments = appointmentService.selectBySno(st.getSno());
 
         JSONArray json = new JSONArray();
 
@@ -61,7 +60,9 @@ public class appointmentController {
     @RequestMapping("createAppointment")
     @ResponseBody
     public JSONObject createAppointment(HttpServletRequest request,HttpServletResponse response){
-        String sno  = request.getSession().getAttribute("user").toString();
+        student st = (student)request.getSession().getAttribute("user");
+        System.out.println(st.getSno());
+        String sno  = st.getSno();
         String tno = request.getParameter("tno");
         consultant c = consultantService.selectByTno(tno);
         if(c.getCurrenNumber()>=c.getTotalNumber()){
