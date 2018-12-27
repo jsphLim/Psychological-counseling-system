@@ -10,10 +10,6 @@ function c_o_li_data() {
 }
 function c_o_li_submit() {
         var data = c_o_li_data();
-        if(data["username"]==="" || data["password"]===""){
-            alert("账号密码不能为空");
-            return ;
-        }
 
         $.ajax({
             url: "login",
@@ -77,7 +73,11 @@ function register_submit() {
         dataType: "JSON",
         success: function(response) {
             if (response.error_code === 1) {
+                location.reload();
+                setTimeout('window.location.href="index.html"', 1000);
                 alert(response.error_message)
+
+
             } else {
                 alert(response.error_message);
                 setTimeout('window.location.href="index.html"', 3000);
@@ -119,13 +119,9 @@ function online() {
                     $("#UserID").innerHTML(response.toString()
                                              + '<b class="caret"></b>');
                 }
-                else{
-                setTimeout('window.location.href="index.html"', 1000);
-                }
         },
         error: function(xhr, msg, e) {
-            alert("网络异常");
-            setTimeout('window.location.href="index.html"', 1000);
+            alert("error!");
         }
     });
 }
