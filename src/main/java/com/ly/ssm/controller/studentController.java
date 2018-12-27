@@ -40,8 +40,9 @@ public class studentController {
         System.out.println(username+password);
         HttpSession session = request.getSession();
         student s=studentService.checkLogin(username,password);
+
         if(s!=null){
-            session.setAttribute("user", s.getSno());
+            session.setAttribute("user", s);
             return util.errorCode(1,"登录成功");
         }
 //        System.out.print(111);
@@ -81,11 +82,11 @@ public class studentController {
     @RequestMapping("online")
     @ResponseBody
     public String online(HttpServletRequest request,HttpServletResponse response){
-        Object student = request.getSession().getAttribute("user");
+        student st = (student)request.getSession().getAttribute("user");
 
-        if (student != null) {
-            log.log(Priority.toPriority("session:"),student);
-            return student.toString();
+        if (st != null) {
+            log.log(Priority.toPriority("session:"),st);
+            return st.getSno();
         } else {
             return null;
         }
@@ -93,14 +94,14 @@ public class studentController {
     @RequestMapping("changepw")
     @ResponseBody
     public JSONObject changePw(HttpServletRequest request, HttpServletResponse response){
-        Object user = request.getSession().getAttribute("user");
+        student user = (student)request.getSession().getAttribute("user");
         if(user==null){
             return util.errorCode(0,"请重新登录");
         }
         String oldPassword = util.encrypt(request.getParameter("oldpw"));
         String newPassword = util.encrypt(request.getParameter("newpw"));
-        if(studentService.checkLogin(user.toString(),oldPassword)!=null){
-            studentService.updatePassword(user.toString(),newPassword);
+        if(studentService.checkLogin(user.getSno(),oldPassword)!=null){
+            studentService.updatePassword(user.getSno(),newPassword);
             request.getSession().removeAttribute("user");
             return util.errorCode(1,"修改成功!请重新登录!");
         }
