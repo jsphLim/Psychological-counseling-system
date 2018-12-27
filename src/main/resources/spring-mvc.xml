@@ -25,18 +25,18 @@
     <!-- don't handle the static resource -->
     <mvc:default-servlet-handler />
 
-    <!--<mvc:interceptors>-->
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/showAll"/>-->
-            <!--<mvc:mapping path="/changepw"/>-->
-            <!--<mvc:mapping path="/searchTname"/>-->
-            <!--<mvc:mapping path="/search"/>-->
-            <!--<mvc:mapping path="/createAppointment"/>-->
-            <!--&lt;!&ndash;<mvc:mapping path="/reservation.html"/>&ndash;&gt;-->
-            <!--<bean class="com.ly.ssm.interceptor.CommonInterceptor"/>-->
-        <!--</mvc:interceptor>-->
+    <!--配置拦截器, 多个拦截器,顺序执行 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->
+            <mvc:mapping path="/home.html" />  <!-- 拦截用户路径 -->
+            <mvc:mapping path="/reservation.html" />  <!-- 拦截用户路径 -->
 
-    <!--</mvc:interceptors>-->
+            <bean class="com.ly.ssm.interceptor.CommonInterceptor"></bean>    <!-- 自定义拦截器路径 -->
+        </mvc:interceptor>
+        <!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 -->
+    </mvc:interceptors>
+
 
     <!-- if you use annotation you must configure following setting -->
     <mvc:annotation-driven>
