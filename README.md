@@ -9,6 +9,7 @@
 - 2.创建你自己的数据库，然后把文件中的sql文件执行即可
 - 3.修改jdbc.properties中的配置属性即可
 - 4.下载tomcat8.5 直接在IDEA配置运行或者将导出war包丢tomcat运行都可以
+- 54.启动后访问http://localhost:端口号/index.html即可
 
 <br>细节:
 - 1.前端用的是之前做的一个外包里面的一个页面
