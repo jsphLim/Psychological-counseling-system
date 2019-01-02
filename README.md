@@ -11,12 +11,6 @@
 - 4.下载tomcat8.5 直接在IDEA配置运行或者将导出war包丢tomcat运行都可以
 - 54.启动后访问http://localhost:端口号/index.html即可
 
-<br>细节:
-- 1.前端用的是之前做的一个外包里面的一个页面
-- 2.数据库实验0.5学分 所以没花大功夫在上面，功能不是很完善。
-- 3.有一些细节可能没处理好，因为是一个人周末断断续续写的，急着提交跑路。
-- 4.适合新手入门
-
 ![Image text](http://www.jsphlim.cn/docs/1.png)
 
 ![Image text](http://www.jsphlim.cn/docs/2.png)
