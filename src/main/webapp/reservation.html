@@ -48,6 +48,7 @@
                         </script>
                     </a>
                     <ul class="dropdown-menu">
+                        <li><a href="reservation.html">我的预约</a></li>
                         <li><a href="index.html" onclick="logout()">登出</a></li>
                     </ul>
                 </li>
@@ -91,7 +92,7 @@
                         dataType:"JSON",
                         success: function (response) {
                             if(response === true)
-                                setTimeout('window.location.href="home.html"');
+                                setTimeout('window.location.href="reservation.html"');
                         },
                         error: function(xhr, msg, e) {
                             console.log(e);
