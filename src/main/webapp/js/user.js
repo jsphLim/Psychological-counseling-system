@@ -15,6 +15,7 @@ function c_o_li_submit() {
             url: "login",
             type: "POST",
             //contex: ,
+            async:false,
             data: data,
             dataType: "JSON",
             success: function(response) {
@@ -80,7 +81,7 @@ function register_submit() {
 
             } else {
                 alert(response.error_message);
-                setTimeout('window.location.href="index.html"', 3000);
+                setTimeout('window.location.href="index.html"', 1000);
 
             }
             // setTimeout('window.location.href="index.html"', 3000);
