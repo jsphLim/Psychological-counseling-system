@@ -131,11 +131,11 @@
                         url:"changepw",
                         type: "POST",
                         data:data,
+                        async:false ,
                         dataType:"JSON",
                         success: function (response) {
                             if(response.error_code === 1) {
-                                alert(response.error_message);
-                                setTimeout('window.location.href="index.html"');
+                                window.location.href="index.html";
                             }
                             else{
                                 alert(response.error_message);
@@ -169,7 +169,7 @@
                 <form class="form-group" action="">
                     <div class="form-group">
                         <label for="">旧密码</label>
-                        <input id="oldpw" class="form-control" type="text" placeholder="">
+                        <input id="oldpw" class="form-control" type="password" placeholder="">
                     </div>
                     <div class="form-group">
                         <label for="">新密码</label>
