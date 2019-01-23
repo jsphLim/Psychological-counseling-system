@@ -11,12 +11,10 @@
 - 4.下载tomcat8.5 直接在IDEA配置运行或者将导出war包丢tomcat运行都可以
 - 54.启动后访问http://localhost:端口号/index.html即可
 
-![Image text](http://www.jsphlim.cn:82/docs/1.png)
+![Image text](https://github.com/jsphLim/Psychological-counseling-system/blob/master/docs/1.png?raw=true)
 
-![Image text](http://www.jsphlim.cn:82/docs/2.png)
+![Image text](https://github.com/jsphLim/Psychological-counseling-system/blob/master/docs/2.png?raw=true)
 
-![Image text](http://www.jsphlim.cn:82/docs/4.png)
-
-![Image text](http://www.jsphlim.cn:82/docs/3.png)
+![Image text](https://github.com/jsphLim/Psychological-counseling-system/blob/master/docs/3.png?raw=true)
 
 
